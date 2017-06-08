@@ -226,7 +226,6 @@ def dumpValues(cap, devices) {
 
     }
     devices.each { device ->
-        log.debug "device attributes ${device}"
 
         def value = [:]
         try {
