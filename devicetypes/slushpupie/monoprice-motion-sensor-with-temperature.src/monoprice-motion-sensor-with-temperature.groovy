@@ -49,15 +49,7 @@ metadata {
     }
 
 	tiles(scale: 2) {
-		multiAttributeTile(name:"motion", type: "generic", width: 6, height: 4){
-			tileAttribute ("device.motion", key: "PRIMARY_CONTROL") {
-				attributeState "active", label:'motion', icon:"st.motion.motion.active", backgroundColor:"#53a7c0"
-				attributeState "inactive", label:'no motion', icon:"st.motion.motion.inactive", backgroundColor:"#ffffff"
-			}
-            tileAttribute ("device.battery", key: "SECONDARY_CONTROL") {
-                attributeState("default", label:'${currentValue}% battery', icon: "https://raw.githubusercontent.com/constjs/jcdevhandlers/master/img/battery-icon-614x460.png")
-            }
-		}
+		
 		valueTile("temperature", "device.temperature", width: 3, height: 2) {
 			state("temperature", label:'${currentValue}°', unit:"F",
 				backgroundColors:[
@@ -71,11 +63,20 @@ metadata {
 				]
 			)
 		}
+        multiAttributeTile(name:"motion", type: "generic", width: 6, height: 4){
+			tileAttribute ("device.motion", key: "PRIMARY_CONTROL") {
+				attributeState "active", label:'motion', icon:"st.motion.motion.active", backgroundColor:"#53a7c0"
+				attributeState "inactive", label:'no motion', icon:"st.motion.motion.inactive", backgroundColor:"#ffffff"
+			}
+            tileAttribute ("device.battery", key: "SECONDARY_CONTROL") {
+                attributeState("default", label:'${currentValue}% battery', icon: "https://raw.githubusercontent.com/constjs/jcdevhandlers/master/img/battery-icon-614x460.png")
+            }
+		}
         standardTile("refresh", "device.motion", width: 3, height: 2, inactiveLabel: false, decoration: "flat") {
 			state "default", label:'Refresh', action:"refresh.refresh", icon:"st.secondary.refresh-icon"
 		}
-		main(["motion", "temperature"])
-		details(["motion", "temperature", "refresh"])
+		main(["temperature"])
+		details(["temperature", "motion", "refresh"])
 	}
 }
 
