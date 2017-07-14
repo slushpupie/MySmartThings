@@ -40,7 +40,7 @@ preferences {
   }
 
   section("Via text message at this number (or via push notification if not specified") {
-    input("recipients", "theSwitch", title: "Send notifications to") {
+    input("recipients", "contact", title: "Send notifications to") {
       input "phone", "phone", title: "Phone number (optional)", required: false
     }
   }
